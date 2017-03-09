@@ -44,7 +44,7 @@ This API is responsible for storing, updating, deleting and getting information 
 As I have used TDD for the services part, some unit tests were created, but I have also created some integrations tests. To make it easier to test, I have setup a docker-compose to run the tests. The steps are below:
 
 * clone the repository
-* `docker-compose up`
+* `docker-compose up ci`
 
 # How to run the app?
 
