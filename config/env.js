@@ -6,9 +6,9 @@ export default {
     port: process.env.HTTP_PORT || '3000',
   },
   db: {
-    host: process.env.DB_HOST || '192.168.99.100',
-    port: process.env.DB_PORT || '27017',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || '5432',
     timeout: process.env.DB_TIMEOUT || 30000,
-    database: process.env.DB_DATABASE || 'local',
+    database: process.env.DB_DATABASE || 'products_test',
   },
 };

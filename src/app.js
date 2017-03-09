@@ -12,6 +12,7 @@ export async function application () {
 
   app.use((err, req, res, next) => { // eslint-disable-line consistent-return,no-unused-vars
     if (err) {
+      console.log(err);
       return handleError(err, res);
     }
   });
@@ -23,7 +24,7 @@ const handleError = (err, res) => {
   if (!err.error && err.code === '23505') {
     return res.status(400).send({ error: err.detail });
   }
-  return res.send(500);
+  return res.sendStatus(500);
 };
 
 export async function start (config) {

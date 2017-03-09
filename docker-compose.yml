@@ -1,0 +1,43 @@
+version: '2'
+services:
+  local:
+    image: node:7.7.1-onbuild
+    command: bash -c "npm run dev:watch"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: test
+      HTTP_PORT: 3000
+      # HTTP_HOST: '0.0.0.0'
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  ci:
+    build: .
+    command: npm run test
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: test
+      HTTP_PORT: 3000
+      HTTP_HOST: '0.0.0.0'
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: sql
+      POSTGRES_DB: products_test

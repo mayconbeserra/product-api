@@ -1,4 +1,5 @@
 const path = require('path');
+const config = require('./config');
 
 module.exports = {
   test: {
@@ -7,6 +8,7 @@ module.exports = {
       user: 'postgres',
       password: 'sql',
       database: 'products_test',
+      host: config.default.env.db.host,
     },
     migrations: {
       directory: path.join(__dirname, '/db/migrations'),
@@ -21,6 +23,7 @@ module.exports = {
       user: 'postgres',
       password: 'sql',
       database: 'products_test',
+      host: config.default.env.db.host,
     },
     migrations: {
       directory: path.join(__dirname, '/db/migrations'),
@@ -31,7 +34,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE,
     migrations: {
       directory: path.join(__dirname, '/db/migrations'),
     },

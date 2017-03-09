@@ -41,11 +41,11 @@ export async function update (req, res) {
 export async function del (req, res) {
   const product = await repository().getById(req.params.id);
 
-  if (!product) res.status(404).end();
+  if (!product) return res.status(404).end();
 
   await reportService({
     repo: repository(),
   }).del(req.params.id);
 
-  res.status(200).json(product);
+  return res.status(200).json(product);
 }
