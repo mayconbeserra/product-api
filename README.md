@@ -39,17 +39,24 @@ This API is responsible for storing, updating, deleting and getting information 
 * Middleware
 * Repository Pattern
 
+# Requirements
+
+* Docker version 17.03.0-ce, build 60ccb22
+* Node v7.7.1
+
 # How to run the tests?
 
 As I have used TDD for the services part, some unit tests were created, but I have also created some integrations tests. To make it easier to test, I have setup a docker-compose to run the tests. The steps are below:
 
 * clone the repository
-* `docker-compose up ci`
+* `docker-compose stop`
+* `docker-compose up --force-recreate --remove-orphans ci`
 
 # How to run the app?
 
 * clone the repository
-* `docker-compose run --service-ports local`
+* `docker-compose stop`
+* `docker-compose up --force-recreate --remove-orphans local`
 
 # API versioning
 

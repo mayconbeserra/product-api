@@ -2,7 +2,7 @@ version: '2'
 services:
   local:
     image: node:7.7.1-onbuild
-    command: bash -c "npm run dev:watch"
+    command: bash -c "npm run docker:dev"
     volumes:
       - .:/usr/src/app
     ports:
@@ -19,7 +19,7 @@ services:
 
   ci:
     build: .
-    command: npm run test
+    command: npm run docker:test
     volumes:
       - .:/usr/src/app
     ports:
